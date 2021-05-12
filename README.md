@@ -1,0 +1,1 @@
+This is simple project for verify circleci config file
