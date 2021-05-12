@@ -1,0 +1,23 @@
+version: 2.1
+
+parameters:
+  manual_test:
+    type: boolean
+    default: false
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python3:3.9-stretch
+    steps:
+      - checkout
+      - run: echo "Hello world"
+
+workflows:
+  commit:
+    jobs:
+      - build
+  manual_test:
+    jobs:
+      - build
+    when: << pipeline.parameters.manual_test >>
