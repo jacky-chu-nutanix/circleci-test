@@ -5,10 +5,15 @@ parameters:
     type: boolean
     default: false
 
-jobs:
-  build:
+executors:
+  docker-img:
     docker:
       - image: circleci/python3:3.9-stretch
+
+jobs:
+  build:
+    executor:
+      docker-img
     steps:
       - checkout
       - run: echo "Hello world"
